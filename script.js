@@ -66,19 +66,19 @@ function iniciarCronometro() {
     return id;
 }
 
-function removeListener() {
+function remove() {
     itemsArray.forEach(item => {
         item.removeEventListener("click", jogar);
     });
 };
 
-function addListener() {
+function adiciona() {
     itemsArray.forEach(item => {
         item.addEventListener("click", jogar);
     });
 }
 
-addListener();
+adiciona();
 
 function jogar(event) {
     const item = event.currentTarget;
@@ -117,16 +117,16 @@ function verificarCartas(carta1, carta2) {
     let carta1Image = carta1.children[1].children[0].getAttribute("src");
     let carta2Image = carta2.children[1].children[0].getAttribute("src");
 
-    removeListener();
+    remove();
     if(carta1Image !== carta2Image) {
         setTimeout(function() {
             giraCarta(carta1);
             giraCarta(carta2);
-            addListener();
+            adiciona();
         }, 1000);
         return false;
     } else {
-        setTimeout(addListener, 400);
+        setTimeout(adiciona, 400);
         return true;
     };
 };
